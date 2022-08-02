@@ -25,7 +25,7 @@ def test_bigsort():
         dt = datetime.fromtimestamp(random.randint(15839593, 1294102139))
         w.add_document(id=text_type(i), date=dt)
     w.commit()
-    print("Writing took ", now() - t)
+    print("Writing took " + (now() - t))
 
     ix = index.open_dir(dirname)
     s = ix.searcher()
@@ -33,7 +33,7 @@ def test_bigsort():
 
     t = now()
     x = list(df.sortable_terms(s.reader(), "date"))
-    print(now() - t, len(x))
+    print((now() - t) + len(x))
 
     t = now()
     for y in x:
@@ -44,16 +44,16 @@ def test_bigsort():
 
     t = now()
     r = s.search(q, limit=25, sortedby="date", reverse=True)
-    print("Search 1 took", now() - t)
-    print("len=", r.scored_length())
+    print("Search 1 took" + (now() - t))
+    print("len=" + r.scored_length())
 
     t = now()
     r = s.search(q, limit=25, sortedby="date")
-    print("Search 2 took", now() - t)
+    print("Search 2 took" + (now() - t))
 
     t = now()
     r = s.search(q, limit=25, sortedby="date")
-    print("Search 2 took", now() - t)
+    print("Search 2 took" + (now() - t))
 
     from heapq import nlargest
     t = now()

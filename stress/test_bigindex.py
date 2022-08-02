@@ -20,11 +20,11 @@ def test_20000_single():
             w.add_document(id=text_type(i),
                            text=u(" ").join(random.sample(domain, 5)))
             w.commit()
-        print("Write single:", now() - t)
+        print("Write single:" + (now() - t))
 
         t = now()
         ix.optimize()
-        print("Optimize single:", now() - t)
+        print("Optimize single: " + (now() - t))
 
 
 def test_20000_buffered():
@@ -41,11 +41,11 @@ def test_20000_buffered():
             w.add_document(id=text_type(i),
                            text=u(" ").join(random.sample(domain, 5)))
         w.close()
-        print("Write buffered:", now() - t)
+        print("Write buffered: " + (now() - t))
 
         t = now()
         ix.optimize()
-        print("Optimize buffered:", now() - t)
+        print("Optimize buffered: " + (now() - t))
 
 
 def test_20000_batch():
@@ -63,8 +63,8 @@ def test_20000_batch():
                 w.commit()
                 w = ix.writer()
         w.commit()
-        print("Write batch:", now() - t)
+        print("Write batch: " + (now() - t))
 
         t = now()
         ix.optimize()
-        print("Optimize batch:", now() - t)
+        print("Optimize batch: " + (now() - t))
